@@ -1,6 +1,12 @@
+# video number 3
 import backtrader as bt
 import pandas as pd
 import datetime
+from matplotlib.dates import (HOURS_PER_DAY, MIN_PER_HOUR, SEC_PER_MIN,
+                              MONTHS_PER_YEAR, DAYS_PER_WEEK,
+                              SEC_PER_HOUR, SEC_PER_DAY,
+                              num2date, rrulewrapper, YearLocator,
+                              MicrosecondLocator)
 
 import backtesting
 import matplotlib
@@ -27,11 +33,14 @@ cerebro.adddata(data)
 
 # giving strategy file to cerebro
 cerebro.addstrategy(TestStrategy)
-
+# sezer means order quntity
+cerebro.addsizer(bt.sizers.FixedSize,stake = 10)
 print('Starting Portfolio Value: %.2f' % cerebro.broker.getvalue())
 cerebro.run()
 print('Final Portfolio Value: %.2f' % cerebro.broker.getvalue())
+cerebro.plot()
 
-######
+
+
 
 
