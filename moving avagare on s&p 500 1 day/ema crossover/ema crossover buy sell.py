@@ -1,16 +1,17 @@
 import os , sys , argparse
 import pandas as pd
 import backtrader as bt
-from goldenstrategy import GoldenCrossover
+from emacrossoverstrategy import EmaCrossover
+
 
 
 cerebro = bt.Cerebro()
 cerebro.broker.setcash(300000)
-spy_prices = pd.read_csv('NSEI.csv',index_col='Date',parse_dates=True)
+nse_prices = pd.read_csv('../NSEI - NSEI.csv',index_col='Date',parse_dates=True)
 
-feed = bt.feeds.PandasData( dataname = spy_prices)
+feed = bt.feeds.PandasData( dataname = nse_prices)
 cerebro.adddata(feed)
-cerebro.addstrategy(GoldenCrossover)
+cerebro.addstrategy(EmaCrossover)
 print('Starting Portfolio Value: %.2f' % cerebro.broker.getvalue())
 cerebro.run()
 print('Final Portfolio Value: %.2f' % cerebro.broker.getvalue())
