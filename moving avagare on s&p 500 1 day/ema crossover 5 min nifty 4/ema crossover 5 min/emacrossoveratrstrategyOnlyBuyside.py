@@ -15,7 +15,7 @@ class EmaCrossover(bt.Strategy):
         print('%s, %s , %s' % (dt.isoformat(),dt1.isoformat(), txt))
 
 
-    params = (('fast', 13),('slow',29),('order_percentage',0.95),('ticker','SPY'),('period',14),('period1',39))
+    params = (('fast', 13),('slow',26),('order_percentage',0.95),('ticker','Nifty50'),('period',13),('period1',14))
 
 
 # -----------------------------------------------------------------------------------------------------------------------
@@ -38,6 +38,8 @@ class EmaCrossover(bt.Strategy):
         self.sell_signal = 0
         self.account_fund = 0
         self.account_fund_list = []
+        self.trade_pnl_list = []
+
 
 
 
@@ -72,7 +74,12 @@ class EmaCrossover(bt.Strategy):
         self.account_fund = self.account_fund+ trade.pnl
         self.account_fund_list.append(self.account_fund)
         self.log('account cum profit  %.2f' %(self.account_fund))
-        print(self.account_fund_list)
+        print(f"account run up profit list {self.account_fund_list}")
+
+
+        self.trade_pnl_detail = trade.pnl
+        self.trade_pnl_list.append(self.trade_pnl_detail)
+        print(f"each trade profit and loss list {self.trade_pnl_list}")
         # self.log('account cum profit  %.2f' %(self.account_fund_list))
 
 
@@ -87,7 +94,7 @@ class EmaCrossover(bt.Strategy):
         # print(self.order) # this return order details
         # print(self.position) #this return position details
 
-        if self.crossover > 0  and self.rsi >= 60:
+        if self.crossover > 0  and self.rsi >= 53:
             print(len(self))
             self.a = self.a + 1
             self.buy_signal = self.buy_signal + 1
@@ -98,7 +105,7 @@ class EmaCrossover(bt.Strategy):
             self.log('Close, %.2f' % self.dataclose[0])
 
 
-        elif self.crossover < 0 and self.rsi <= 40 :
+        elif self.crossover < 0 and self.rsi <= 44 :
             print(len(self))
             self.a = self.a + 1
             self.sell_signal = self.sell_signal + 1
@@ -111,19 +118,19 @@ class EmaCrossover(bt.Strategy):
         if self.order:
             return
         if self.position.size == 0 :
-            if self.crossover > 0 and self.rsi >= 60:
+            if self.crossover > 0 and self.rsi >= 54:
                 self.log('SIGNAL GOT FOR BUY CREATE, %.2f' % self.dataclose[0])
                 self.order = self.buy()
 
                 # self.sell_price = (self.data.close[0] - self.data.close[0] * 0.025)
                 # self.sell_price_tp = (self.data.close[0] + self.data.close[0] * 0.06)
-                self.sell_price = (self.data.low[0] - self.atr[0] * 1.1)
-                self.sell_price_tp = (self.data.high[0] + self.atr[0] * 15)
+                self.sell_price = (self.data.low[0] - self.atr[0] * 1.5)
+                self.sell_price_tp = (self.data.high[0] + self.atr[0] * 8)
 
                 print("your stop loss is {}  and target is  {} ".format(self.sell_price, self.sell_price_tp))
 
 
-            elif self.crossover < 0 and self.rsi <= 44:
+            elif self.crossover < 0 and self.rsi <= 40:
                 self.log('SIGNAL GOT FOR SHORT  CREATE, %.2f' % self.dataclose[0])
                 self.order = self.sell()
 
@@ -142,7 +149,7 @@ class EmaCrossover(bt.Strategy):
             # print(self.order) # this return order details
             # print(self.position) #this return position details
 
-
+            # VALUE 53 IS GOOD RATHER THAN 60 BUT 60 RUDUCE NUMBER OF TRADERS
             if  self.crossover > 0 and self.rsi >= 60:
 
 
@@ -155,8 +162,8 @@ class EmaCrossover(bt.Strategy):
 
                 # self.sell_price = (self.data.close[0] - self.data.close[0] * 0.025)
                 # self.sell_price_tp = (self.data.close[0] + self.data.close[0] * 0.06)
-                self.sell_price = (self.data.low[0] - self.atr[0] * 1.1)
-                self.sell_price_tp = (self.data.high[0] + self.atr[0] * 15)
+                self.sell_price = (self.data.low[0] - self.atr[0] * 1.5)
+                self.sell_price_tp = (self.data.high[0] + self.atr[0] * 8)
 
                 print("your stop loss is {}  and target is  {} ".format(self.sell_price, self.sell_price_tp))
 

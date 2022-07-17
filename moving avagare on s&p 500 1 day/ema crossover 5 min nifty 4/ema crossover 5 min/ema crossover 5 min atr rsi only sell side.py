@@ -3,7 +3,7 @@ import pandas as pd
 import datetime
 import backtrader as bt
 import backtrader.feeds as btfeed
-from emacrossoveratrstrategy import EmaCrossover
+from emacrossoveratrstrategyOnlySellside import EmaCrossover
 import backtrader.analyzers as btanalyzers
 
 from analyzer_in_dataframe01 import BarAnalysis
@@ -17,8 +17,13 @@ from analyzer_in_dataframe01 import BarAnalysis
 # feed = bt.feeds.PandasData( dataname = nse_prices)
 # ✨✨✨🐱‍🏍🐱‍🏍
 feed = bt.feeds.GenericCSVData(
-dataname='./[5_minute_nifty_50]_01april_22to_14_jul_22.csv',
-# dataname='./[5_minute_nifty_50]_04_1_21_to_14_7_22.csv',
+# dataname='./Downtrend[5_minute_nifty_50]_01april_22to_14_jul_22.csv',
+# dataname='./Downtrend[5_minute_nifty_50]_17_jan_22_to_7march_22.csv',
+# dataname='./Downtrend[5_minute_nifty_50]_18_OCT_22_to_21DEC_22.csv',
+dataname='./Uptrend[5_minute_nifty_50]_04_jan_21_to_18_oct_21.csv',
+
+
+# dataname='./da overall_data_[5_minute_nifty_50]_04_1_21_to_14_7_22.csv',
 datetime=0,
 fromdate=datetime.datetime(2021, 1, 4),
 timeframe=bt.TimeFrame.Minutes,

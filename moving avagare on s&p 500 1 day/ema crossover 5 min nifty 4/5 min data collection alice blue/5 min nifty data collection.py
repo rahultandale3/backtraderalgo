@@ -77,4 +77,4 @@ df = pd.DataFrame(get_historical(instrument,f_date,to_date, interval, indices))
 # df.index= df["date"]
 # df = df.drop("date", axis=1)
 print(df)
-# df.to_csv("E:\\algo trading\\historical data\\[5_minute_nifty_50]_04_1_21_to_14_7_22.csv", index=False)
+# df.to_csv("E:\\algo trading\\historical data\\da overall_data_[5_minute_nifty_50]_04_1_21_to_14_7_22.csv", index=False)
