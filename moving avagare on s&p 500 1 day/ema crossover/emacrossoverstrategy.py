@@ -2,6 +2,7 @@ import math
 import backtrader as bt
 
 class EmaCrossover(bt.Strategy):
+
     # params is touple which we store the values of variable
     params = (('fast', 11),('slow',26),('order_percentage',0.95),('ticker','SPY'),('period',14))
 

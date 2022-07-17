@@ -38,7 +38,7 @@ reverse=True)
 # ✨✨✨🐱‍🏍🐱‍🏍
 
 
-# 🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️litteraly i was frustated 
+# 🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️litteraly i was frustated
 # feed = btfeed.GenericCSVData(
 # '''this method id wrong menthod , dont use '''
 #     dataname='./15minute_nifty_50_04_1_21_to_3_6_22.csv',

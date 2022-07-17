@@ -13,14 +13,15 @@ cerebro.broker.setcash(10000)
 
 # creating datafeeds
 # data = bt.feeds.YahooFinanceCSVData(dataname='ohlcdata.csv')
-data = bt.feeds.YahooFinanceCSVData(
-    dataname= 'RELIANCE.NS.csv',
-    # Do not pass values before this date
-    fromdate=datetime.datetime(2001,6, 11),
-    # Do not pass values before this date
-    todate=datetime.datetime(2022, 6, 8),
-    # Do not pass values after this date
-    reverse=False)
+data = bt.feeds.YahooFinanceCSVData(dataname='RELIANCE.NS.csv')
+# data = bt.feeds.YahooFinanceCSVData(
+#     dataname= 'RELIANCE.NS.csv',
+#     # Do not pass values before this date
+#     fromdate=datetime.datetime(2001,6, 11),
+#     # Do not pass values before this date
+#     todate=datetime.datetime(2022, 6, 8),
+#     # Do not pass values after this date
+#     reverse=False)
 # it considering 6th colunm as a close value but ohlcdata.csv contain 6th number volume column
 # adding data to cerebro
 cerebro.adddata(data)
